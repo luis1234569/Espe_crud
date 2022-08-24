@@ -10,15 +10,8 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
-    public List<Book> findAll(){
-        return bookRepository.findAll();
-    }
-
     public Book save(Book book){
-        return bookRepository.save(book);
-    }
 
-    public Book update(Book book){
         return bookRepository.save(book);
     }
 
@@ -26,7 +19,17 @@ public class BookService {
         return bookRepository.findById(id).orElse(new Book());
     }
 
+    public Book update(Book book){
+        return bookRepository.save(book);
+    }
+
     public void deleteById(long id){
         bookRepository.deleteById(id);
     }
+
+    public List<Book> findAll(){
+        return bookRepository.findAll();
+    }
+
+
 }
