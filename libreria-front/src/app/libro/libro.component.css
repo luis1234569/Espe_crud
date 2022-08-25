@@ -1,0 +1,25 @@
+.formulario{
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 20px;
+}
+.table{
+    padding: 36px;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+th{
+    width: 10rem;
+}
+td{
+    width: 10rem;
+}
+
+.input{
+    margin-top: 19px;
+}
+
+button{
+    margin-top: 19px;
+}

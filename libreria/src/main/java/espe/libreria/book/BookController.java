@@ -56,5 +56,11 @@ public class BookController {
         return bookService.findAll();
     }
 
+    //Buscar
+    @GetMapping("/findByAutor/{term}")
+    public List<Book> findByAutor(@PathVariable String term){
+        return bookService.findByAutor(term);
+    }
+
 
 }

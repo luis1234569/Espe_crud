@@ -33,4 +33,9 @@ export class BookService {
     return this.http.get<Book[]>(this.url+"/list", this.httpOptions);
   }
 
+  public findByAutor(term: string): Observable<Book[]>{
+    console.log(term);
+    return this.http.get<Book[]>(this.url+"/findByAutor/"+term, this.httpOptions);
+  }
+
 }

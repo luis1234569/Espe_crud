@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Book } from './libro';
 import { BookService } from './libro.service';
+
+
 
 
 @Component({
@@ -10,6 +12,9 @@ import { BookService } from './libro.service';
   styleUrls: ['./libro.component.css']
 })
 export class LibroComponent implements OnInit {
+
+  @Input() valueAutor: string = "";
+  @Output() termEmitter = new EventEmitter<string>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -84,6 +89,6 @@ export class LibroComponent implements OnInit {
     )
   }
 
-  
+
 
 }
