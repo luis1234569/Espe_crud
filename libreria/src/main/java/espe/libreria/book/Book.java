@@ -14,7 +14,7 @@ public class Book {
     private long libroId;
     private String isbn;
     private String tittle;
-    private String autor;
+    private String autor;   
     private String editorial;
     private String category;
     private Date created_date;
