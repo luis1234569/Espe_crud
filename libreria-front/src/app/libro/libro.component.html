@@ -1,26 +1,95 @@
 
 
-<div class="">
+<p-card>
     <label for="">ISBN:</label>
     <input class="" type="text" name="" id="" placeholder="ISBN"
-      [(ngModel)]="initialValues.isbn">
+      [(ngModel)]="initialValues.isbn"><br>
       <label for="">Titulo:</label>
     <input class="" type="text" name="" id="" placeholder="Titulo"
-      [(ngModel)]="initialValues.tittle">
+      [(ngModel)]="initialValues.tittle"><br>
       <label for="">Autor:</label>
     <input class="" type="text" name="" id="" placeholder="Autor"
-      [(ngModel)]="initialValues.autor">
+      [(ngModel)]="initialValues.autor"><br>
       <label for="">Editorial:</label>
     <input class="" type="text" name="" id="" placeholder="Editorial"
-      [(ngModel)]="initialValues.editorial">
+      [(ngModel)]="initialValues.editorial"><br>
       <label for="">Categoria:</label>
     <input class="" type="text" name="" id="" placeholder="Categoria"
-      [(ngModel)]="initialValues.category">
+      [(ngModel)]="initialValues.category"><br>
       <label for="">Fecha de creacion:</label>
     <input class="" type="date" name="" id="" placeholder="Fecha de creacion"
-      [(ngModel)]="initialValues.created_date">
+      [(ngModel)]="initialValues.created_date"><br>
 
-      <button class="" (click)="save()">Guardar</button>
+      <button pButton
+      pRipple
+      label="Guardar"
+      class="p-button-raised p-button-info" (click)="save()"></button>
+      <button  pButton
+      pRipple
+      label="Eliminar"
+      class="p-button-raised p-button-warning" (click)="deleteById()"></button>
+</p-card>
+<p-card>
+    <div class="table">
+        <table class="table table-compact w-full">
+            <thead>
+              <tr>
+                
+                <th>titulo</th>
+                <th>autor</th>
+                <th>fecha</th>
+                <th>acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of allBooks">
+                
+                <td>{{book.tittle}}</td>
+                <td>{{book.autor}}</td>
+                <td>{{book.created_date}}</td>
+                <td>
+                    <a [routerLink]="[book.libroId]">
+                      <svg class="h-2 w-2" fill="white" xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" >
+                          <path
+                            d="M9.288,13.067c-2.317.446-3.465,3.026-3.963,4.634A1,1,0,0,0,6.281,19H10a3,3,0,0,0,2.988-3.274A3.107,3.107,0,0,0,9.288,13.067Z" />
+                          <path
+                            d="M23,8.979a1,1,0,0,0-1,1V15H18a3,3,0,0,0-3,3v4H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2H16.042a1,1,0,0,0,0-2H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H16.343a4.966,4.966,0,0,0,3.535-1.464l2.658-2.658A4.966,4.966,0,0,0,24,16.343V9.979A1,1,0,0,0,23,8.979ZM18.464,21.122a3.022,3.022,0,0,1-1.464.8V18a1,1,0,0,1,1-1h3.925a3.022,3.022,0,0,1-.8,1.464Z" />
+                          <path
+                            d="M14.566,14.17a1,1,0,0,1-.707-1.707L21.712,4.61a.943.943,0,0,0,0-1.335A.9.9,0,0,0,21.018,3a.933.933,0,0,0-.678.314l-7.6,8.407a1,1,0,0,1-1.484-1.341l7.6-8.4A2.949,2.949,0,0,1,20.963,1a2.985,2.985,0,0,1,2.163.862,2.947,2.947,0,0,1,0,4.163l-7.853,7.853A.993.993,0,0,1,14.566,14.17Z" />
+                          </svg>
+                    </a>
+                    
+                  </td>
+                
+      
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</p-card>
+
+
+<h5>Addons</h5>
+<div class="grid p-fluid">
+    <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Username">         
+        </div>
+    </div>
+    
+    <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">$</span>
+            <input type="text" pInputText placeholder="Price">   
+            <span class="p-inputgroup-addon">.00</span>      
+        </div>
+    </div>
+            
+    <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">www</span>
+            <input type="text" pInputText placeholder="Website">      
+        </div>
+    </div>
 </div>
-
-

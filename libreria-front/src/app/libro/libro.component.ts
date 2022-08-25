@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Book } from './libro';
 import { BookService } from './libro.service';
 
@@ -13,6 +13,7 @@ export class LibroComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private bookService: BookService,
   ) {}
 
@@ -27,6 +28,7 @@ export class LibroComponent implements OnInit {
   }
     
   ngOnInit(): void {
+    this.findAll();
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         if (params.get("id")){
@@ -34,20 +36,36 @@ export class LibroComponent implements OnInit {
         }
       }
     )
+    this.findAll();
   }
 
   save(): void {
     this.bookService.save(this.initialValues)
       .subscribe(
-        () => this.initialValues={
-          libroId:0 ,
-          isbn:"" ,
-          tittle:"" ,
-          autor:"" ,
-          editorial:"" ,
-          category:"" ,
-          created_date: new Date()
-        });
+        () => {
+          this.initialValues={
+            libroId:0 ,
+            isbn:"" ,
+            tittle:"" ,
+            autor:"" ,
+            editorial:"" ,
+            category:"" ,
+            created_date: new Date()
+          };
+          this.router.navigate(['/libro']);
+        }
+      );
+
+  }
+
+  allBooks: Book[] = [];
+
+  findAll(): void {
+    this.bookService.findAll().subscribe(
+      (response) => {
+        this.allBooks = response;
+      }
+    )
   }
 
   findById(id: number):void {
@@ -61,8 +79,7 @@ export class LibroComponent implements OnInit {
   deleteById():void{
     this.bookService.deleteById(this.initialValues.libroId).subscribe(
       () => {
-        console.log("Borrado");
-        //redireccionar ....
+        this.router.navigate(['/libro']);
       }
     )
   }

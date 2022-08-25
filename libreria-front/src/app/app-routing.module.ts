@@ -4,6 +4,7 @@ import { LibroComponent } from './libro/libro.component';
 
 const routes: Routes = [
   { path: 'libro', component: LibroComponent },
+  { path: 'libro/:id', component: LibroComponent },
 ];
 
 @NgModule({
