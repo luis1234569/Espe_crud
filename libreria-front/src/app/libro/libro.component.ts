@@ -13,8 +13,6 @@ import { BookService } from './libro.service';
 })
 export class LibroComponent implements OnInit {
 
-  @Input() valueAutor: string = "";
-  @Output() termEmitter = new EventEmitter<string>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,11 +27,11 @@ export class LibroComponent implements OnInit {
     autor:"" ,
     editorial:"" ,
     category:"" ,
-    created_date: new Date() 
+    createdDate: new Date() 
   }
     
   ngOnInit(): void {
-    this.findAll();
+    // this.findAll();
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         if (params.get("id")){
@@ -55,7 +53,7 @@ export class LibroComponent implements OnInit {
             autor:"" ,
             editorial:"" ,
             category:"" ,
-            created_date: new Date()
+            createdDate: new Date()
           };
           this.router.navigate(['/libro']);
         }
@@ -89,6 +87,78 @@ export class LibroComponent implements OnInit {
     )
   }
 
+  onInputAutor(term: string){
+    console.log(term);
+    if (term=="") {
+      this.findAll();
+    } else {
+      this.bookService.findByAutor(term).subscribe(
+        (response) => {
+          this.allBooks = response;
+        }
+      )
+    }
+    
+  }
+
+  onInputTittle(term: string){
+    console.log(term);
+    if (term=="") {
+      this.findAll();
+    } else {
+      this.bookService.findByTittle(term).subscribe(
+        (response) => {
+          this.allBooks = response;
+        }
+      )
+    }
+    
+  }
+
+  onInputEditorial(term: string){
+    console.log(term);
+    if (term=="") {
+      this.findAll();
+    } else {
+      this.bookService.findByEditorial(term).subscribe(
+        (response) => {
+          this.allBooks = response;
+        }
+      )
+    }
+    
+  }
+
+
+  
+
+  onInputCategoria(term: string){
+    console.log(term);
+    if (term=="") {
+      this.findAll();
+    } else {
+      this.bookService.findByCategory(term).subscribe(
+        (response) => {
+          this.allBooks = response;
+        }
+      )
+    }
+    
+  }
+
+  onInputDate(term: string){
+    console.log(term);
+    if (term=="") {
+      this.findAll();
+    } else {
+      this.bookService.findByCreatedDate(term).subscribe(
+        (response) => {
+          this.allBooks = response;
+        }
+      )
+    }
+    
+  }
 
 
 }

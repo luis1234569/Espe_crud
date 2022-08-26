@@ -35,5 +35,21 @@ public class BookService {
         return bookRepository.findByAutorLikeIgnoreCase(term + "%");
     }
 
+    public List<Book> findByTittle(String term){
+        return bookRepository.findByTittleLikeIgnoreCase(term + "%");
+    }
+
+    public List<Book> findByEditorial(String term){
+        return bookRepository.findByEditorialLikeIgnoreCase(term + "%");
+    }
+
+    public List<Book> findByCreatedDate(String term){
+        return bookRepository.findByCreatedDateLikeIgnoreCase(term + "%");
+    }
+
+    public List<Book> findByCategory(String term){
+        return bookRepository.findByCategoryLikeIgnoreCase(term + "%");
+    }
+
 
 }

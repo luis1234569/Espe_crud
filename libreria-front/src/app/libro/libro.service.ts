@@ -38,4 +38,24 @@ export class BookService {
     return this.http.get<Book[]>(this.url+"/findByAutor/"+term, this.httpOptions);
   }
 
+  public findByTittle(term: string): Observable<Book[]>{
+    console.log(term);
+    return this.http.get<Book[]>(this.url+"/findByTittle/"+term, this.httpOptions);
+  }
+
+  public findByEditorial(term: string): Observable<Book[]>{
+    console.log(term);
+    return this.http.get<Book[]>(this.url+"/findByEditorial/"+term, this.httpOptions);
+  }
+
+  public findByCreatedDate(term: string): Observable<Book[]>{
+    console.log(term);
+    return this.http.get<Book[]>(this.url+"/findByCreatedDate/"+term, this.httpOptions);
+  }
+
+  public findByCategory(term: string): Observable<Book[]>{
+    console.log(term);
+    return this.http.get<Book[]>(this.url+"/findByCategory/"+term, this.httpOptions);
+  }
+
 }

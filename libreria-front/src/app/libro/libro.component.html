@@ -43,7 +43,7 @@
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">Fecha de creacion</span>
                 <input class="" type="date" pInputText name="" id="" placeholder="Fecha de creacion"
-          [(ngModel)]="initialValues.created_date">      
+          [(ngModel)]="initialValues.createdDate">      
             </div>
         </div>
         
@@ -66,36 +66,86 @@
                 <div class="p-inputgroup">
                     
                     <span class="p-inputgroup-addon">reporte del autor:</span>
-                    <app-search></app-search>
-                    <button type="button" pButton pRipple icon="pi pi-search" styleClass="p-button-warn"></button>    
+                    <input #inputSearchAutor class="" pInputText type="text" name="" placeholder="Buscar" id=""
+    (input)="onInputAutor(inputSearchAutor.value)">
+                     
+                </div>
+            </div>
+        </div>
+        <div class="filtro">
+            <div class="col-12 md:col-4 input">
+                <div class="p-inputgroup">
+                    
+                    <span class="p-inputgroup-addon">reporte del Titulo:</span>
+                    <input #inputSearchTittle class="" pInputText type="text" name="" placeholder="Buscar" id=""
+    (input)="onInputTittle(inputSearchTittle.value)">
+                     
+                </div>
+            </div>
+        </div>
+        <div class="filtro">
+            <div class="col-12 md:col-4 input">
+                <div class="p-inputgroup">
+                    
+                    <span class="p-inputgroup-addon">reporte del Editorial:</span>
+                    <input #inputSearchEditorial class="" pInputText type="text" name="" placeholder="Buscar" id=""
+    (input)="onInputEditorial(inputSearchEditorial.value)">
+                     
+                </div>
+            </div>
+        </div>
+        <!-- <div class="filtro">
+            <div class="col-12 md:col-4 input">
+                <div class="p-inputgroup">
+                    
+                    <span class="p-inputgroup-addon">reporte del Fecha:</span>
+                    <input #inputSearchDate class="" pInputText type="date" name="" placeholder="Buscar" id=""
+    >
+                    <button type="button" pButton pRipple icon="pi pi-search" styleClass="p-button-warn" (click)="onInputDate(inputSearchDate.value)"></button>   
+                </div>
+            </div>
+        </div> -->
+        <div class="filtro">
+            <div class="col-12 md:col-4 input">
+                <div class="p-inputgroup">
+                    
+                    <span class="p-inputgroup-addon">reporte del Categoria:</span>
+                    <input #inputSearchCategoria class="" pInputText type="text" name="" placeholder="Buscar" id=""
+    (input)="onInputCategoria(inputSearchCategoria.value)">
+                     
                 </div>
             </div>
         </div>
 
     <div class="table">
-        <table class="table table-compact w-full">
+        
+        <table class="">
             <thead>
               <tr>
-                
-                <th>titulo</th>
-                <th>autor</th>
-                <th>fecha</th>
-                <th>acciones</th>
+                <th>ISBN</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+               
+                <th>Editorial</th>
+                <th>Categoria</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let book of allBooks">
-                
+                <td>{{book.isbn}}</td>
                 <td>{{book.tittle}}</td>
                 <td>{{book.autor}}</td>
-                <td>{{book.created_date}}</td>
+                <td>{{book.editorial}}</td>
+                <td>{{book.category}}</td>
+                <td>{{book.createdDate}}</td>
                 <td>
                     <a [routerLink]="[book.libroId]">
                         <i class="pi pi-user-edit"></i>
                     </a>
                     
                   </td>
-                
       
               </tr>
             </tbody>

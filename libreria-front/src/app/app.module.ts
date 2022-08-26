@@ -11,13 +11,13 @@ import { LibroComponent } from './libro/libro.component';
 import {ButtonModule} from 'primeng/button';
 import { CardModule, } from 'primeng/card';
 import {TableModule} from 'primeng/table';
-import { SearchComponent } from './libro/search/search.component';
+// import { SearchComponent } from './libro/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LibroComponent,
-    SearchComponent
+    // SearchComponent
   ],
   imports: [
     BrowserModule,

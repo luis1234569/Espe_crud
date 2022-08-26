@@ -5,5 +5,5 @@ export interface Book{
     autor:string ,
     editorial:string ,
     category:string ,
-    created_date:Date ,
+    createdDate:Date ,
 }

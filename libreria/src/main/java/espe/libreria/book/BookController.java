@@ -56,10 +56,30 @@ public class BookController {
         return bookService.findAll();
     }
 
-    //Buscar
+    //Buscar sections
     @GetMapping("/findByAutor/{term}")
     public List<Book> findByAutor(@PathVariable String term){
         return bookService.findByAutor(term);
+    }
+
+    @GetMapping("/findByTittle/{term}")
+    public List<Book> findByTittle(@PathVariable String term){
+        return bookService.findByTittle(term);
+    }
+
+    @GetMapping("/findByEditorial/{term}")
+    public List<Book> findByEditorial(@PathVariable String term){
+        return bookService.findByEditorial(term);
+    }
+
+    @GetMapping("/findByCreatedDate/{term}")
+    public List<Book> findByCreatedDate(@PathVariable String term){
+        return bookService.findByCreatedDate(term);
+    }
+
+    @GetMapping("/findByCategory/{term}")
+    public List<Book> findByCategory(@PathVariable String term){
+        return bookService.findByCategory(term);
     }
 
 

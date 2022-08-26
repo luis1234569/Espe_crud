@@ -17,6 +17,6 @@ public class Book {
     private String autor;   
     private String editorial;
     private String category;
-    private Date created_date;
+    private Date createdDate;
 
 }
