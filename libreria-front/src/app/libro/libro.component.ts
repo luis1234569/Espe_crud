@@ -71,6 +71,15 @@ export class LibroComponent implements OnInit {
     });
   }
 
+  deleteByIdClick(id: number): void {
+    this.bookService.deleteById(id).subscribe(() => {
+      this.router.navigate(['/libro']);
+      this.findAll();
+    });
+  }
+
+
+  
   onInputAutor(term: string) {
     console.log(term);
     if (term == '') {

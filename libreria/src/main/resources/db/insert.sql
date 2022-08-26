@@ -13,4 +13,8 @@ libro_id     | integer           |              | not null | nextval('book_libro
  autor        | character varying |              |          |
  editorial    | character varying |              |          |
  category     | character varying |              |          |
- created_date | date              |
+ created_date | date            
+
+
+ insert into categoria (code, name) values('code'||generate_series(1,5),
+'category'||generate_series(1,5))

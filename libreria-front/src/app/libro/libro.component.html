@@ -1,6 +1,5 @@
 <p-card>
-  <p-splitter
-  >
+  <p-splitter>
     <ng-template pTemplate>
       <p-splitter layout="vertical" [panelSizes]="[50, 50]">
         <ng-template pTemplate>
@@ -19,8 +18,10 @@
                         <div class="p-inputgroup">
                           <span class="p-inputgroup-addon">ISBN</span>
                           <input
+                          maxlength="5"
+                          
                             class=""
-                            type="text"
+                            type="number"
                             pInputText
                             name=""
                             id=""
@@ -33,6 +34,7 @@
                         <div class="p-inputgroup">
                           <span class="p-inputgroup-addon">Titulo</span>
                           <input
+                          maxlength="50"
                             class=""
                             type="text"
                             pInputText
@@ -48,6 +50,7 @@
                           <span class="p-inputgroup-addon">Autor</span>
                           <input
                             class=""
+                            maxlength="50"
                             type="text"
                             pInputText
                             name=""
@@ -61,6 +64,7 @@
                         <div class="p-inputgroup">
                           <span class="p-inputgroup-addon">Editorial</span>
                           <input
+                          maxlength="50"
                             class=""
                             type="text"
                             pInputText
@@ -76,6 +80,7 @@
                           <span class="p-inputgroup-addon">Categoria</span>
                           <input
                             class=""
+                            maxlength="50"
                             type="text"
                             pInputText
                             name=""
@@ -110,13 +115,13 @@
                       label="Save"
                       icon="pi pi-check"
                     ></p-button>
-                    <p-button
+                    <!-- <p-button
                       (click)="deleteById()"
                       label="Eliminar"
                       icon="pi pi-times"
                       styleClass="p-button-secondary"
                       [style]="{ 'margin-left': '.5em' }"
-                    ></p-button>
+                    ></p-button> -->
                   </ng-template>
                 </p-card>
               </div>
@@ -215,42 +220,66 @@
         </ng-template>
         <ng-template pTemplate>
           <div class="col flex align-items-center justify-content-center">
-            <p-card header="Libros" [style]="{'margin-bottom': '2em'}">
-                <ng-template pTemplate="content">
-                    <p-table [value]="allBooks" responsiveLayout="scroll">
-                        <ng-template pTemplate="header">
-                          <tr>
-                            <th>ISBN</th>
-                            <th>Titulo</th>
-                            <th>Autor</th>
-          
-                            <th>Editorial</th>
-                            <th>Categoria</th>
-                            <th>Fecha</th>
-                            <th>Acciones</th>
-                          </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-book>
-                          <tr>
-                            <td>{{ book.isbn }}</td>
-                            <td>{{ book.tittle }}</td>
-                            <td>{{ book.autor }}</td>
-                            <td>{{ book.editorial }}</td>
-                            <td>{{ book.category }}</td>
-                            <td>{{ book.createdDate }}</td>
-                            <td>
-                              <a [routerLink]="[book.libroId]">
-                                <i class="pi pi-user-edit"></i>
-                              </a>
-                            </td>
-                          </tr>
-                        </ng-template>
-                      </p-table>
-                </ng-template>
-              </p-card>
-            
+            <p-card header="Libros" [style]="{ 'margin-bottom': '2em' }">
+              <div class="card">
+                <p-table
+                  [value]="allBooks"
+                  [paginator]="true"
+                  [rows]="5"
+                  [showCurrentPageReport]="true"
+                  responsiveLayout="scroll"
+                  currentPageReportTemplate="Mostrando {first} de {last}, {totalRecords} filas"
+                  [rowsPerPageOptions]="[5, 10, 50]"
+                >
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>ISBN</th>
+                      <th>Titulo</th>
+                      <th>Autor</th>
+                      <th>Editorial</th>
+                      <th>Categoria</th>
+                      <th>Fecha</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-book>
+                    <tr>
+                      <td>{{ book.isbn }}</td>
+                      <td>{{ book.tittle }}</td>
+                      <td>{{ book.autor }}</td>
+                      <td>{{ book.editorial }}</td>
+                      <td>{{ book.category }}</td>
+                      <td>{{ book.createdDate }}</td>
+                      <td>
+                        <a [routerLink]="[book.libroId]">
+                          <p-button
+                            icon="pi pi-user-edit"
+                            styleClass="p-button-info"
+                            iconPos="left"
+                          ></p-button>
+                        </a>
 
+                        <a (click)="deleteByIdClick(book.libroId)">
+                          <p-button
+                            icon="pi pi-trash"
+                            styleClass="p-button-danger"
+                            iconPos="left"
+                          ></p-button>
+                        </a>
+                      </td>
+                    </tr>
+                  </ng-template>
 
+                  <ng-template pTemplate="paginatorright">
+                    <p-button
+                      type="button"
+                      icon="pi pi-cloud"
+                      styleClass="p-button-text"
+                    ></p-button>
+                  </ng-template>
+                </p-table>
+              </div>
+            </p-card>
           </div>
         </ng-template>
       </p-splitter>

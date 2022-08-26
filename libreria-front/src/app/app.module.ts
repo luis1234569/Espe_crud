@@ -11,7 +11,6 @@ import { LibroComponent } from './libro/libro.component';
 import {ButtonModule} from 'primeng/button';
 import { CardModule, } from 'primeng/card';
 import {TableModule} from 'primeng/table';
-// import { SearchComponent } from './libro/search/search.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {SplitterModule} from 'primeng/splitter';
 
@@ -19,7 +18,6 @@ import {SplitterModule} from 'primeng/splitter';
   declarations: [
     AppComponent,
     LibroComponent,
-    // SearchComponent
   ],
   imports: [
     BrowserModule,
