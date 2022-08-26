@@ -12,6 +12,8 @@ import {ButtonModule} from 'primeng/button';
 import { CardModule, } from 'primeng/card';
 import {TableModule} from 'primeng/table';
 // import { SearchComponent } from './libro/search/search.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {SplitterModule} from 'primeng/splitter';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {TableModule} from 'primeng/table';
 
     CardModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    InputTextModule,
+    SplitterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

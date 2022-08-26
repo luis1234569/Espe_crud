@@ -25,3 +25,65 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+<!-- <div class="filtro">
+                                                        <div class="col-12 md:col-4 input">
+                                                            <div class="p-inputgroup">
+                                                                
+                                                                <span class="p-inputgroup-addon">reporte del Fecha:</span>
+                                                                <input #inputSearchDate class="" pInputText type="date" name="" placeholder="Buscar" id=""
+                                                >
+                                                                <button type="button" pButton pRipple icon="pi pi-search" styleClass="p-button-warn" (click)="onInputDate(inputSearchDate.value)"></button>   
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+
+
+onInputDate(term: string) {
+    console.log(term);
+    if (term == '') {
+      this.findAll();
+    } else {
+      this.bookService.findByCreatedDate(term).subscribe((response) => {
+        this.allBooks = response;
+      });
+    }
+  }
+
+
+
+    <!-- <p-card>
+              <div class="table">
+                <table class="">
+                  <thead>
+                    <tr>
+                      <th>ISBN</th>
+                      <th>Titulo</th>
+                      <th>Autor</th>
+
+                      <th>Editorial</th>
+                      <th>Categoria</th>
+                      <th>Fecha</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let book of allBooks">
+                      <td>{{ book.isbn }}</td>
+                      <td>{{ book.tittle }}</td>
+                      <td>{{ book.autor }}</td>
+                      <td>{{ book.editorial }}</td>
+                      <td>{{ book.category }}</td>
+                      <td>{{ book.createdDate }}</td>
+                      <td>
+                        <a [routerLink]="[book.libroId]">
+                          <i class="pi pi-user-edit"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </p-card> -->
