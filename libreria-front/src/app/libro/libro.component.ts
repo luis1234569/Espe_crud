@@ -65,11 +65,11 @@ export class LibroComponent implements OnInit {
     });
   }
 
-  deleteById(): void {
-    this.bookService.deleteById(this.initialValues.libroId).subscribe(() => {
-      this.router.navigate(['/libro']);
-    });
-  }
+  // deleteById(): void {
+  //   this.bookService.deleteById(this.initialValues.libroId).subscribe(() => {
+  //     this.router.navigate(['/libro']);
+  //   });
+  // }
 
   deleteByIdClick(id: number): void {
     this.bookService.deleteById(id).subscribe(() => {
