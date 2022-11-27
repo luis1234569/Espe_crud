@@ -1,9 +1,9 @@
 INSERT INTO book(isbn,tittle,autor,editorial,category) 
-VALUES ('cccisbn'||generate_series(1,2),
-'ccctittle'||generate_series(1,2),
-'cccautor'||generate_series(1,2),
-'ccceditorial'||generate_series(1,2),
-'ccccategory'||generate_series(1,2)
+VALUES ('aaaisbn'||generate_series(1,6),
+'aaatittle'||generate_series(1,6),
+'aaaautor'||generate_series(1,6),
+'aaaeditorial'||generate_series(1,6),
+'aaacategory'||generate_series(1,6)
 );
 
 
