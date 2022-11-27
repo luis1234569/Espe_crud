@@ -13,7 +13,17 @@ libro_id     | integer           |              | not null | nextval('book_libro
  autor        | character varying |              |          |
  editorial    | character varying |              |          |
  category     | character varying |              |          |
- created_date | date            
+ created_date | date   
+
+ create table book (
+    libro_id serial not null,
+    isbn varchar,
+    tittle varchar,
+    autor varchar,
+    editorial varchar,
+    category varchar,
+    created_date date
+ )     
 
 
  insert into categoria (code, name) values('code'||generate_series(1,5),
