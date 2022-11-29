@@ -1,12 +1,8 @@
-<p-card>
-  <p-splitter>
-    <ng-template pTemplate>
-      <p-splitter layout="vertical" [panelSizes]="[50, 50]">
-        <ng-template pTemplate>
-          <p-splitter [panelSizes]="[50, 50]">
-            <ng-template pTemplate>
-              <div class="col flex align-items-center justify-content-center">
-                <p-card
+
+<p-splitter [style]="{'height': 'auto'}" styleClass="p-mb-5">
+  <ng-template pTemplate>
+    <div class="p-col p-d-flex p-ai-center p-jc-center ">
+      <p-card
                   header="Formulario"
                   subheader="Ingresar el curso"
                   [style]="{ width: 'auto' }"
@@ -120,165 +116,70 @@
                     ></p-button>
                   </ng-template>
                 </p-card>
-              </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate>
+    <div class="p-col p-d-flex p-ai-center p-jc-center">
+      <p-card header="Cursos" [style]="{ 'margin-bottom': '2em' }">
+        <div class="card">
+          <p-table
+            [value]="allCourses"
+            [paginator]="true"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            responsiveLayout="scroll"
+            currentPageReportTemplate="Mostrando {first} de {last}, {totalRecords} filas"
+            [rowsPerPageOptions]="[5, 10, 50]"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th>name</th>
+                <th>hours</th>
+                <th>tutor</th>
+                <th>receiver</th>
+                <th>startDate</th>
+                <th>endDate</th>
+                <th>Acciones</th>
+              </tr>
             </ng-template>
-            <!-- <ng-template pTemplate>
-              <div class="col flex align-items-center justify-content-center">
-                <p-card
-                  header="Generar Reporte"
-                  subheader="Buscar"
-                  [style]="{ width: 'auto' }"
-                  styleClass="p-card-shadow"
-                >
-                  <ng-template pTemplate="content">
-                    <div class="filtro">
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
-                            >reporte por autor:</span
-                          >
-                          <input
-                            #inputSearchAutor
-                            class=""
-                            pInputText
-                            type="text"
-                            name=""
-                            placeholder="Buscar"
-                            id=""
-                            (input)="onInputAutor(inputSearchAutor.value)"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
-                            >reporte por Titulo:</span
-                          >
-                          <input
-                            #inputSearchTittle
-                            class=""
-                            pInputText
-                            type="text"
-                            name=""
-                            placeholder="Buscar"
-                            id=""
-                            (input)="onInputTittle(inputSearchTittle.value)"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
-                            >reporte por Editorial:</span
-                          >
-                          <input
-                            #inputSearchEditorial
-                            class=""
-                            pInputText
-                            type="text"
-                            name=""
-                            placeholder="Buscar"
-                            id=""
-                            (input)="
-                              onInputEditorial(inputSearchEditorial.value)
-                            "
-                          />
-                        </div>
-                      </div>
-
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
-                            >reporte por Categoria:</span
-                          >
-                          <input
-                            #inputSearchCategoria
-                            class=""
-                            pInputText
-                            type="text"
-                            name=""
-                            placeholder="Buscar"
-                            id=""
-                            (input)="
-                              onInputCategoria(inputSearchCategoria.value)
-                            "
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </ng-template>
-                </p-card>
-              </div>
-            </ng-template> -->
-          </p-splitter>
-        </ng-template>
-        <ng-template pTemplate>
-          <div class="col flex align-items-center justify-content-center">
-            <p-card header="Cursos" [style]="{ 'margin-bottom': '2em' }">
-              <div class="card">
-                <p-table
-                  [value]="allCourses"
-                  [paginator]="true"
-                  [rows]="5"
-                  [showCurrentPageReport]="true"
-                  responsiveLayout="scroll"
-                  currentPageReportTemplate="Mostrando {first} de {last}, {totalRecords} filas"
-                  [rowsPerPageOptions]="[5, 10, 50]"
-                >
-                  <ng-template pTemplate="header">
-                    <tr>
-                      <th>name</th>
-                      <th>hours</th>
-                      <th>tutor</th>
-                      <th>receiver</th>
-                      <th>startDate</th>
-                      <th>endDate</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-course>
-                    <tr>
-                      <td>{{ course.name }}</td>
-                      <td>{{ course.hours }}</td>
-                      <td>{{ course.tutor }}</td>
-                      <td>{{ course.receiver }}</td>
-                      <td>{{ course.startDate }}</td>
-                      <td>{{ course.endDate }}</td>
-                      <td>
-                        <a [routerLink]="[course.id]">
-                          <p-button
-                            icon="pi pi-user-edit"
-                            styleClass="p-button-info"
-                            iconPos="left"
-                          ></p-button>
-                        </a>
-
-                        <a (click)="deleteByIdClick(course.id)">
-                          <p-button
-                            icon="pi pi-trash"
-                            styleClass="p-button-danger"
-                            iconPos="left"
-                          ></p-button>
-                        </a>
-                      </td>
-                    </tr>
-                  </ng-template>
-
-                  <ng-template pTemplate="paginatorright">
+            <ng-template pTemplate="body" let-course>
+              <tr>
+                <td>{{ course.name }}</td>
+                <td>{{ course.hours }}</td>
+                <td>{{ course.tutor }}</td>
+                <td>{{ course.receiver }}</td>
+                <td>{{ course.startDate }}</td>
+                <td>{{ course.endDate }}</td>
+                <td>
+                  <a [routerLink]="[course.id]">
                     <p-button
-                      type="button"
-                      icon="pi pi-cloud"
-                      styleClass="p-button-text"
+                      icon="pi pi-user-edit"
+                      styleClass="p-button-info"
+                      iconPos="left"
                     ></p-button>
-                  </ng-template>
-                </p-table>
-              </div>
-            </p-card>
-          </div>
-        </ng-template>
-      </p-splitter>
-    </ng-template>
-  </p-splitter>
-</p-card>
+                  </a>
+
+                  <a (click)="deleteByIdClick(course.id)">
+                    <p-button
+                      icon="pi pi-trash"
+                      styleClass="p-button-danger"
+                      iconPos="left"
+                    ></p-button>
+                  </a>
+                </td>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="paginatorright">
+              <p-button
+                type="button"
+                icon="pi pi-cloud"
+                styleClass="p-button-text"
+              ></p-button>
+            </ng-template>
+          </p-table>
+        </div>
+      </p-card>
+    </div>
+  </ng-template>
+</p-splitter>
