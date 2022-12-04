@@ -18,37 +18,39 @@ export class CourseComponent implements OnInit {
 
   initialValues: Course = {
     id: 0,
-    name: '',
-    hours: 0,
-    tutor: '',
-    startDate: new Date,
-    endDate: new Date,
-    receiver: ''
+    name: 'ingles',
+    email: 'vvdf'
   };
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      if (params.get('id')) {
-        this.findById(parseInt(params.get('id')!));
-      }
-    });
     this.findAll();
+    console.log(this.initialValues)
   }
 
   save(): void {
-    this.courseService.save(this.initialValues).subscribe(() => {
-      this.initialValues = {
-        id: 0,
-        name: '',
-        hours: 0,
-        tutor: '',
-        startDate: new Date,
-        endDate: new Date,
-        receiver: ''
-      };
-      this.router.navigate(['/']);
-      this.findAll();
-    });
+    if (this.initialValues.id==0) {
+      this.courseService.save(this.initialValues).subscribe((res) => {
+        this.initialValues = {
+          id: 0,
+          name: '',
+          email: '',
+        };
+        this.router.navigate(['/']);
+        this.findAll();
+        console.log(res)
+      });
+    } else {
+      this.courseService.update(this.initialValues).subscribe(() => {
+        this.initialValues = {
+          id: 0,
+          name: '',
+          email: '',
+        };
+        this.router.navigate(['/']);
+        this.findAll();
+      });
+    }
+
   }
 
   allCourses: Course[] = [];
@@ -59,11 +61,11 @@ export class CourseComponent implements OnInit {
     });
   }
 
-  findById(id: number): void {
-    this.courseService.findById(id).subscribe((response) => {
-      this.initialValues = response;
-    });
-  }
+  // findById(id: number): void {
+  //   this.courseService.findById(id).subscribe((response) => {
+  //     this.initialValues = response;
+  //   });
+  // }
 
   deleteByIdClick(id: number): void {
     this.courseService.deleteById(id).subscribe(() => {
@@ -72,4 +74,15 @@ export class CourseComponent implements OnInit {
     });
   }
 
+  selectCourse(id: number){
+    this.courseService.findById(id).subscribe((res) => {
+      this.initialValues=res
+      console.log(this.initialValues)
+      console.log(res.email)
+    });
+  }
+
+  set(){
+    this.initialValues.email='homes'
+  }
 }

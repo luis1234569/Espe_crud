@@ -22,15 +22,21 @@ export class CourseService {
     return this.http.post<Course>(this.url + "/save", course, this.httpOptions)
   }
 
-  public findAll(): Observable<Course[]>{
-    return this.http.get<Course[]>(this.url+"/list",this.httpOptions)
+  public update(course: Course): Observable<Course> {
+    return this.http.put<Course>(this.url + "/" + course.id, course, this.httpOptions)
   }
 
-  public deleteById(id: number):Observable<Course>{
-    return this.http.delete<Course>(this.url+"/"+id,this.httpOptions)
+  public findAll(): Observable<Course[]> {
+    return this.http.get<Course[]>(this.url + "/list", this.httpOptions)
   }
 
-  public findById(id: number): Observable<Course>{
-    return this.http.get<Course>(this.url+"/"+id, this.httpOptions);
+  public deleteById(id: number): Observable<Course> {
+    return this.http.delete<Course>(this.url + "/" + id, this.httpOptions)
   }
+
+  public findById(id: number): Observable<Course> {
+    return this.http.get<Course>(this.url + "/" + id, this.httpOptions);
+  }
+
+
 }

@@ -1,121 +1,52 @@
 
-<p-splitter [style]="{'height': 'auto'}" styleClass="p-mb-5">
+<p-splitter [style]="{ height: 'auto' }" styleClass="p-mb-5">
   <ng-template pTemplate>
-    <div class="p-col p-d-flex p-ai-center p-jc-center ">
+    <div class="p-col p-d-flex p-ai-center p-jc-center">
       <p-card
-                  header="Formulario"
-                  subheader="Ingresar el curso"
-                  [style]="{ width: 'auto' }"
-                  styleClass="p-card-shadow"
-                >
-                  <ng-template pTemplate="content">
-                    <div class="grid p-fluid">
+        header="Formulario"
+        subheader="Ingresar el curso"
+        [style]="{ width: 'auto' }"
+        styleClass="p-card-shadow"
+      >
+        <ng-template pTemplate="content">
+          <div class="grid p-fluid">
+            <div class="col-12 md:col-4 input">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">Nombre del curso</span>
+                <input
+                  maxlength="50"
+                  class=""
+                  type="text"
+                  pInputText
+                  name=""
+                  id=""
+                  placeholder="Nombre del curso"
+                  [(ngModel)]="initialValues.name"
+                />
+              </div>
+            </div>
+            <div class="col-12 md:col-4 input">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">HORAS</span>
+                <input
+                  maxlength="5"
+                  class=""
+                  type="text"
+                  pInputText
+                  name=""
+                  id=""
+                  placeholder="HORAS"
+                  [(ngModel)]="initialValues.email"
+                />
+              </div>
+            </div>
+          </div>
+        </ng-template>
 
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon">Nombre del curso</span>
-                          <input
-                          maxlength="50"
-                            class=""
-                            type="text"
-                            pInputText
-                            name=""
-                            id=""
-                            placeholder="Nombre del curso"
-                            [(ngModel)]="initialValues.name"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon">hours</span>
-                          <input
-                          maxlength="5"
-
-                            class=""
-                            type="number"
-                            pInputText
-                            name=""
-                            id=""
-                            placeholder="hours"
-                            [(ngModel)]="initialValues.hours"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon">tutor</span>
-                          <input
-                            class=""
-                            maxlength="50"
-                            type="text"
-                            pInputText
-                            name=""
-                            id=""
-                            placeholder="tutor"
-                            [(ngModel)]="initialValues.tutor"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon">receiver</span>
-                          <input
-                          maxlength="50"
-                            class=""
-                            type="text"
-                            pInputText
-                            name=""
-                            id=""
-                            placeholder="receiver"
-                            [(ngModel)]="initialValues.receiver"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
-                            >Fecha de inicio</span
-                          >
-                          <input
-                            class=""
-                            type="date"
-                            pInputText
-                            name=""
-                            id=""
-                            placeholder="Fecha de inicio"
-                            [(ngModel)]="initialValues.startDate"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12 md:col-4 input">
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
-                            >Fecha de fin</span
-                          >
-                          <input
-                            class=""
-                            type="date"
-                            pInputText
-                            name=""
-                            id=""
-                            placeholder="Fecha de fin"
-                            [(ngModel)]="initialValues.endDate"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </ng-template>
-
-                  <ng-template pTemplate="footer">
-                    <p-button
-                      (click)="save()"
-                      label="Save"
-                      icon="pi pi-check"
-                    ></p-button>
-                  </ng-template>
-                </p-card>
+        <ng-template pTemplate="footer">
+          <p-button (click)="save()" label="Save" icon="pi pi-check"></p-button>
+        </ng-template>
+      </p-card>
     </div>
   </ng-template>
   <ng-template pTemplate>
@@ -134,24 +65,15 @@
             <ng-template pTemplate="header">
               <tr>
                 <th>name</th>
-                <th>hours</th>
-                <th>tutor</th>
-                <th>receiver</th>
-                <th>startDate</th>
-                <th>endDate</th>
-                <th>Acciones</th>
+                <th>email</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-course>
               <tr>
                 <td>{{ course.name }}</td>
-                <td>{{ course.hours }}</td>
-                <td>{{ course.tutor }}</td>
-                <td>{{ course.receiver }}</td>
-                <td>{{ course.startDate }}</td>
-                <td>{{ course.endDate }}</td>
+                <td>{{ course.email }}</td>
                 <td>
-                  <a [routerLink]="[course.id]">
+                  <a (click)="selectCourse(course.id)">
                     <p-button
                       icon="pi pi-user-edit"
                       styleClass="p-button-info"
@@ -183,3 +105,4 @@
     </div>
   </ng-template>
 </p-splitter>
+
